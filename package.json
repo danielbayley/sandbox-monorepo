@@ -1,0 +1,28 @@
+{
+  "version": "0.0.0",
+  "name": "@sandbox-monorepo/ab",
+  "type": "module",
+  "exports": "./index.js",
+  "packageManager": "pnpm@10.6.3",
+  "pnpm": {
+    "requiredScripts": [
+      "test"
+    ]
+  },
+  "dependencies": {
+    "@sandbox-monorepo/a": "workspace:^",
+    "@sandbox-monorepo/b": "workspace:^"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "pretest": "pnpm --recursive test",
+    "test": "node --test test.js",
+    "version": "pnpm --recursive version",
+    "postversion": "sed -i '' -E \"s/^(\"version\": *)$npm_old_version\\$/\\1$npm_new_version/\" package.* && git commit --message $npm_new_version **/package.* && git tag --annotate $npm_new_version --message v$npm_new_version && git push --follow-tags",
+    "clean": "git clean -X --force",
+    "zap": "git clean && rm -rf **/node_modules || true",
+    "reinstall": "pnpm zap && pnpm install"
+  }
+}

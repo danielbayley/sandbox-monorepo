@@ -1,0 +1,16 @@
+{
+  "version": "0.0.0",
+  "name": "@sandbox-monorepo/b",
+  "type": "module",
+  "exports": "./index.js",
+  "dependencies": {
+    "share": "workspace:^"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node --test test.js",
+    "version": "sed -i '' -E \"s/^(\"version\": *)$npm_old_version\\$/\\1$npm_new_version/\" package.*"
+  }
+}

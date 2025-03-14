@@ -1,0 +1,30 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@sandbox-monorepo/a':
+        specifier: workspace:^
+        version: link:packages/a
+      '@sandbox-monorepo/b':
+        specifier: workspace:^
+        version: link:packages/b
+
+  packages/a:
+    dependencies:
+      share:
+        specifier: workspace:^
+        version: link:../share
+
+  packages/b:
+    dependencies:
+      share:
+        specifier: workspace:^
+        version: link:../share
+
+  packages/share: {}

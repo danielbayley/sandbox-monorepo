@@ -1,0 +1,5 @@
+packages:
+- packages/*
+
+catalog:
+  yaml: ^2.7.0
